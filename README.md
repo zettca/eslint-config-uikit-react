@@ -10,7 +10,7 @@ npm i -D eslint-config-uikit-react
 
 ## Usage
 
-```json
+```jsonc
 {
   "extends": ["uikit-react"],
   "rules": {
