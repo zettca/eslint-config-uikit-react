@@ -40,13 +40,13 @@ module.exports = {
       "error",
       {
         devDependencies: [
-          "**/*.test.{ts,tsx}",
+          "*.{test,spec}.{ts,tsx}",
+          "*.config.{ts,js}",
           "**/tests.{ts,tsx}",
           "**/tests/**",
           "**/__tests__/**",
-          "**/setupTests.ts",
+          "**/setupTests.ts?",
           "**/mocks/**/*",
-          "**/*.config.{ts,js}",
         ],
       },
     ],
@@ -63,7 +63,7 @@ module.exports = {
         ],
         distinctGroup: false,
         pathGroups: [
-          { pattern: "react", group: "external", position: "before" },
+          // { pattern: "react", group: "external", position: "before" },
           {
             pattern: "@hitachivantara/**",
             group: "external",
@@ -94,7 +94,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["*.test.{ts,tsx}"],
+      files: ["*.{test,spec}.{ts,tsx}"],
       extends: ["plugin:testing-library/react"],
       rules: {
         "testing-library/no-render-in-setup": "off",
