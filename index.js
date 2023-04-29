@@ -40,7 +40,7 @@ module.exports = {
       "error",
       {
         devDependencies: [
-          "*.{test,spec}.{ts,tsx}",
+          "**/*.{test,spec,config}.{ts,tsx}",
           "*.config.{ts,js}",
           "**/tests.{ts,tsx}",
           "**/tests/**",
