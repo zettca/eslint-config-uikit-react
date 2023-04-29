@@ -3,6 +3,10 @@ module.exports = {
   parserOptions: {
     project: true,
   },
+  env: {
+    node: true,
+    browser: true,
+  },
   extends: [
     // Base
     "eslint:all",
@@ -12,7 +16,7 @@ module.exports = {
 
     // React
     "plugin:react/recommended",
-    // "plugin:react/jsx-runtime", // include this in for react@17+
+    // "plugin:react/jsx-runtime", // include this for react@17+
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/strict",
 
