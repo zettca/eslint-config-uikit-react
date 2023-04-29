@@ -16,7 +16,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/strict",
 
-    "prettier", // disable stying rules already covered by prettier
+    "prettier", // disable styling rules already covered by prettier
   ],
   rules: {
     "arrow-body-style": ["error", "as-needed"],
@@ -41,11 +41,9 @@ module.exports = {
       {
         devDependencies: [
           "**/*.{test,spec,config}.{ts,tsx}",
-          "*.config.{ts,js}",
-          "**/tests.{ts,tsx}",
+          "**/{tests,setupTests}.{ts,tsx}",
           "**/tests/**",
           "**/__tests__/**",
-          "**/setupTests.ts?",
           "**/mocks/**/*",
         ],
       },
