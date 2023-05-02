@@ -30,7 +30,7 @@ module.exports = {
       {
         patterns: [
           {
-            group: ["@hitachivantara/uikit-react-*/**"],
+            group: ["@hitachivantara/*/*"],
             message:
               "Only root-level imports are allowed. Sub-imports aren't part of the public API and will cause issues with tree-shaking",
           },
@@ -79,7 +79,7 @@ module.exports = {
     ],
 
     // TypeScript
-    "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn", // warning is preferable to eslint-ignore
 
     // React
     "react/prop-types": "off", // TS props should be used instead
@@ -92,12 +92,13 @@ module.exports = {
         unnamedComponents: "arrow-function",
       },
     ],
+    "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
   },
   overrides: [
     {
-      files: ["*.{test,spec}.{ts,tsx}"],
-      extends: ["plugin:testing-library/react"],
+      files: ["**/__tests__/**/*.ts?(x)", "**/*.{spec,test}.ts?(x)"],
+      extends: ["plugin:jest-dom/recommended", "plugin:testing-library/react"],
       rules: {
         "testing-library/no-render-in-setup": "off",
       },
