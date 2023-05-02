@@ -23,6 +23,7 @@ module.exports = {
     "prettier", // disable styling rules already covered by prettier
   ],
   rules: {
+    "arrow-body-style": "off",
     "no-restricted-exports": "off",
     "no-restricted-imports": [
       "error",
