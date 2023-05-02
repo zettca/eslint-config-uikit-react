@@ -8,22 +8,15 @@ module.exports = {
     browser: true,
   },
   extends: [
-    // Base
     "eslint:all",
     "airbnb",
+    "airbnb/hooks",
     "airbnb-typescript",
     "plugin:@typescript-eslint/recommended", // consider recommended-requiring-type-checking
-
-    // React
-    "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/strict",
-
-    "prettier", // disable styling rules already covered by prettier
+    "prettier", // disable styling rules covered by prettier
   ],
   rules: {
-    "arrow-body-style": ["error", "as-needed"],
     "no-restricted-exports": "off",
     "no-restricted-imports": [
       "error",
@@ -65,12 +58,10 @@ module.exports = {
         ],
         distinctGroup: false,
         pathGroups: [
+          /*
           { pattern: "react", group: "external", position: "before" },
-          {
-            pattern: "@hitachivantara/**",
-            group: "external",
-            position: "after",
-          },
+          { pattern: "@hitachivantara/**", group: "external", position: "after" },
+          */
           { pattern: "@generated/**", group: "internal", position: "before" },
           { pattern: "~/**", group: "internal", position: "before" },
         ],
@@ -82,7 +73,6 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "warn", // warning is preferable to eslint-ignore
 
     // React
-    "react/jsx-key": "off", // important, but doesn't play nicely with spreading
     "react/prop-types": "off", // TS props should be used instead
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
@@ -93,8 +83,6 @@ module.exports = {
         unnamedComponents: "arrow-function",
       },
     ],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "error",
   },
   overrides: [
     {
