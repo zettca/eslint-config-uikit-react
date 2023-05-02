@@ -16,14 +16,13 @@ module.exports = {
 
     // React
     "plugin:react/recommended",
-    // "plugin:react/jsx-runtime", // include this for react@17+
+    "plugin:react/jsx-runtime", // include this for react@17+
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/strict",
 
     "prettier", // disable styling rules already covered by prettier
   ],
   rules: {
-    "arrow-body-style": ["error", "as-needed"],
     "no-restricted-exports": "off",
     "no-restricted-imports": [
       "error",
@@ -65,12 +64,14 @@ module.exports = {
         ],
         distinctGroup: false,
         pathGroups: [
-          // { pattern: "react", group: "external", position: "before" },
+          /*
+          { pattern: "react", group: "external", position: "before" },
           {
             pattern: "@hitachivantara/**",
             group: "external",
             position: "after",
           },
+          */
           { pattern: "@generated/**", group: "internal", position: "before" },
           { pattern: "~/**", group: "internal", position: "before" },
         ],
@@ -82,6 +83,7 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "warn", // warning is preferable to eslint-ignore
 
     // React
+    "react/jsx-key": "off", // important, but doesn't play nicely with spreading
     "react/prop-types": "off", // TS props should be used instead
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
