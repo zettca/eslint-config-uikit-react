@@ -16,14 +16,14 @@ module.exports = {
 
     // React
     "plugin:react/recommended",
-    "plugin:react/jsx-runtime", // include this for react@17+
+    "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/strict",
 
     "prettier", // disable styling rules already covered by prettier
   ],
   rules: {
-    "arrow-body-style": "off",
+    "arrow-body-style": ["error", "as-needed"],
     "no-restricted-exports": "off",
     "no-restricted-imports": [
       "error",
@@ -65,14 +65,12 @@ module.exports = {
         ],
         distinctGroup: false,
         pathGroups: [
-          /*
           { pattern: "react", group: "external", position: "before" },
           {
             pattern: "@hitachivantara/**",
             group: "external",
             position: "after",
           },
-          */
           { pattern: "@generated/**", group: "internal", position: "before" },
           { pattern: "~/**", group: "internal", position: "before" },
         ],
@@ -102,9 +100,6 @@ module.exports = {
     {
       files: ["**/__tests__/**/*.ts?(x)", "**/*.{spec,test}.ts?(x)"],
       extends: ["plugin:jest-dom/recommended", "plugin:testing-library/react"],
-      rules: {
-        "testing-library/no-render-in-setup": "off",
-      },
     },
   ],
 };
