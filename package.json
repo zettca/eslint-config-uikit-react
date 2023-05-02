@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-uikit-react",
+  "name": "@zettca/eslint-config-uikit-react",
   "version": "0.1.1",
   "description": "ESLint configuration for UI-Kit TypeScript React projects",
   "main": "index.js",

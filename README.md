@@ -5,14 +5,14 @@ ESLint configuration for UI-Kit TypeScript React projects
 ## Installation
 
 ```sh
-npm i -D eslint-config-uikit-react
+npm i -D @zettca/eslint-config-uikit-react
 ```
 
 ## Usage
 
 ```jsonc
 {
-  "extends": ["uikit-react"],
+  "extends": ["@zettca/uikit-react"],
   "rules": {
     // override any rules you might see fit
   }
