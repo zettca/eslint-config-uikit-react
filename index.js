@@ -1,11 +1,22 @@
+const {
+  rules: baseRules,
+} = require("eslint-config-airbnb-typescript/lib/shared");
+const { restrictedImportPatterns } = require("./rules");
+
+/**
+ * Default configuration. Mostly inherits external recommendations.
+ */
 module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
     project: true,
   },
   env: {
     node: true,
     browser: true,
+    es2020: true,
   },
   extends: [
     "eslint:all",
@@ -16,64 +27,36 @@ module.exports = {
     "plugin:react/jsx-runtime",
     "prettier", // disable styling rules covered by prettier
   ],
+  /** Please provide an explanation for each added rule. */
   rules: {
-    "no-restricted-exports": "off",
     "no-restricted-imports": [
       "error",
       {
-        patterns: [
-          {
-            group: ["@hitachivantara/*/*"],
-            message:
-              "Only root-level imports are allowed. Sub-imports aren't part of the public API and will cause issues with tree-shaking",
-          },
-        ],
+        patterns: [restrictedImportPatterns.uikitRoot],
       },
     ],
 
-    // imports
+    // TypeScript's `moduleResolution: "node16"` or later handles this
+    // https://typescript-eslint.io/linting/troubleshooting/performance-troubleshooting/#importextensions
     "import/extensions": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
         devDependencies: [
+          ...baseRules["import/no-extraneous-dependencies"][1].devDependencies,
+          "**/setupTests.ts?(x)",
+          // extend support for vite, playwright, msw, etc.
           "**/*.{test,spec,config}.{ts,tsx}",
-          "**/{tests,setupTests}.{ts,tsx}",
-          "**/tests/**",
-          "**/__tests__/**",
           "**/mocks/**/*",
         ],
       },
     ],
-    "import/order": [
-      "error",
-      {
-        groups: [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-        ],
-        distinctGroup: false,
-        pathGroups: [
-          /*
-          { pattern: "react", group: "external", position: "before" },
-          { pattern: "@hitachivantara/**", group: "external", position: "after" },
-          */
-          { pattern: "@generated/**", group: "internal", position: "before" },
-          { pattern: "~/**", group: "internal", position: "before" },
-        ],
-        pathGroupsExcludedImportTypes: ["react"],
-      },
-    ],
 
-    // TypeScript
-    "@typescript-eslint/ban-ts-comment": "warn", // warning is preferable to eslint-ignore
+    // A warning is preferable to having this eslint-ignore'ed
+    "@typescript-eslint/ban-ts-comment": "warn",
 
-    // React
-    "react/prop-types": "off", // TS props should be used instead
+    // TypeScript function components handle these
+    "react/prop-types": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
     "react/function-component-definition": [

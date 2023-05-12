@@ -12,7 +12,10 @@ npm i -D @zettca/eslint-config-uikit-react
 
 ```jsonc
 {
-  "extends": ["@zettca/uikit-react"],
+  "extends": [
+    "@zettca/uikit-react", // base recommended rules
+    "@zettca/uikit-react/extras" // extra rules
+  ],
   "rules": {
     // override any rules you might see fit
   }
